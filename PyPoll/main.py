@@ -5,7 +5,6 @@ import os
 import csv
 
 #csv directory
-
 csvpath = os.path.join("Resources","election_data.csv")
 
 with open(csvpath, "r") as csvfile:
@@ -16,11 +15,9 @@ with open(csvpath, "r") as csvfile:
     csvheader = next(csvreader)
 
     #Initialize total vote count
-
     total_votes = 0
 
     #Initialize candidate vote dictionary
-
     candidate_vote = {}
 
     for row in csvreader:
@@ -34,7 +31,7 @@ with open(csvpath, "r") as csvfile:
         #Add to total votes
         total_votes += 1
 
-    #Calculation of percentages:
+    #-----Calculation of percentages:
 
     for i in candidate_vote:
 
@@ -47,7 +44,7 @@ with open(csvpath, "r") as csvfile:
         #add + rearrange vcount and percentage
         candidate_vote[i] = [percentage,vcount]
 
-    #Identification of winner
+    #------Identification of winner
     
     #initializer
     initial = True
@@ -69,7 +66,7 @@ with open(csvpath, "r") as csvfile:
             greatest = percentage
 
 
-#Print analysis to terminal
+#-------------Print analysis to terminal
 
 print("Election Results")
 print("-------------------------")
@@ -84,9 +81,9 @@ print(f"Winner: {winner}")
 print("-------------------------")
 
 
-#Write analysis to text file
+#------------Write analysis to text file
 
-#txt file directory:
+#txt file directory
 
 outpath = os.path.join("analysis","election-results.txt")
 

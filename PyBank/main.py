@@ -4,11 +4,9 @@ import os
 import csv
 
 #csv directory
-
 csvpath = os.path.join("Resources", "budget_data.csv")
 
 #define average function:
-
 def average(list):
     sum=0
     for x in list:
@@ -23,7 +21,6 @@ with open(csvpath, 'r') as csvfile:
     csvheader = str(next(csvreader))
 
     #declare results dictioanry 
-
     results = {}
 
     #declare months and PnL changes list
@@ -48,7 +45,6 @@ with open(csvpath, 'r') as csvfile:
         months.append(row[0])
 
         #Logical test to save change in PnL
-
         if first_row == True:
 
             pnl_alpha = float(row[1])
