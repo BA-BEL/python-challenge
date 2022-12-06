@@ -19,7 +19,8 @@ with open(csvpath, 'r') as csvfile:
     
     csvreader = csv.reader(csvfile)
 
-    print(str(next(csvreader)))
+    #Store and iterate csv header
+    csvheader = str(next(csvreader))
 
     #declare results dictioanry 
 
@@ -132,6 +133,9 @@ with open(csvpath, 'r') as csvfile:
     "Greatest Decrease in Profits": greatest_decrease}
 
 
+#print analysis to terminal
+print("Financial Analysis")
+print("----------------------------")
 for i in results: 
     print(f"{i}: {results[i]}")
 

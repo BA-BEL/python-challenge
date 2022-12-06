@@ -51,25 +51,56 @@ with open(csvpath, "r") as csvfile:
     
     #initializer
     initial = True
-
+  
     for candidate in candidate_vote:
 
         #Initialize greatest value
         if initial == True:
-            greatest = candidate[0]
+            greatest = candidate_vote[candidate][0]
             initial = False
 
 
         #Store value
-        percentage = candidate[0]
+        percentage = candidate_vote[candidate][0]
 
         #Calculate greatest
         if percentage >= greatest:
             winner = candidate
             greatest = percentage
-        
-        print(winner)
-    
-    
 
+
+#Print analysis to terminal
+
+print("Election Results")
+print("-------------------------")
+
+print(f"Total Votes: {total_votes}")
+print("-------------------------")
+
+[print(f"{candidate}: {candidate_vote[candidate][0]}% ({candidate_vote[candidate][1]})") for candidate in candidate_vote]
+print("-------------------------")
+
+print(f"Winner: {winner}")
+print("-------------------------")
+
+
+#Write analysis to text file
+
+#txt file directory:
+
+outpath = os.path.join("analysis","election-results.txt")
+
+with open(outpath, 'w') as output:
+
+    writer = csv.writer(output)
+
+    writer.writerow(["Election Results"])
+    writer.writerow(["-------------------------"])
+    writer.writerow([f"Total Votes: {total_votes}"])
+    writer.writerow(["-------------------------"])
+    [writer.writerow([f"{candidate}: {candidate_vote[candidate][0]}% ({candidate_vote[candidate][1]})"]) for candidate in candidate_vote]
+    writer.writerow(["-------------------------"])
+    writer.writerow([f"Winner: {winner}"])
+    writer.writerow(["-------------------------"])
+    
 
